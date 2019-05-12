@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de clientes</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+
+    <nav id="navlist" class="col-sm-3 col-md-2 bg-light sidebar">
+        <ul  class="nav nav-pills flex-column">
+            <li class="nav-item"><a id="opcion1" class="nav-link active" href="list">Clientes
+                <span class="sr-only">(current)</span>
+            </a></li>
+
+        </ul>
+    </nav>
+
+    <h1>Lista de clientes</h1>
+    <div align="right">
+        <form th:action="@{/clientes/list}" method="get">
+            <div class="input-group input-group-sm" style="width: 450px;">
+                <input type="text" name="text" class="form-control pull-right" placeholder="Buscar" th:if="${key} == null"/>
+                <input type="text" name="text" class="form-control pull-right" placeholder="Buscar" th:if="${key} != null" th:text="${key}" />
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Buscar...</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <a th:href="@{/clientes/form}" class="btn btn-primary far fa-file">Agregar Cliente
+    </a>
+
+    <table class="table table-striped">
+        <tr>
+            <th><a class="sorted" >id</a></th>
+            <th><a class="sorted" >cliente</a></th>
+            <th><a class="sorted" >tienda</a></th>
+            <th><a class="sorted" >email</a></th>
+            <th><a class="sorted" >telefono</a></th>
+            <th><a class="sorted" >fecha</a></th>
+             <th>&nbsp;opciones</th>
+        </tr>
+        <tr th:each="p : ${lista}">
+            <td th:text="${p.fiid}"></td>
+            <td th:text="${p.fccliente}"></td>
+            <td th:text="${p.fctienda}"></td>
+            <td th:text="${p.fcemail}"></td>
+            <td th:text="${p.fctelefono}"></td>
+            <td th:text="${p.fdfecha}"></td>
+
+            <td>
+                <a href="#" class="btn btn-success" title="Editar" th:href="@{/clientes/form(id=${p.fiid})}">
+                    <span class="far fa-edit"></span> Editar
+                </a>
+                <a href="#" class="btn btn-danger" title="Eliminar" th:href="@{/clientes/eliminar(id=${p.fiid})}">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </a>
+            </td>
+        </tr>
+    </table>
+
+
+</section>
+
+</body>
+
+
+</html>
