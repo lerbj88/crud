@@ -30,12 +30,18 @@ public class ClientesDaoImpl extends JdbcDaoImpl implements ClientesDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<Clientes> getClientes(){
+
+    public List<Clientes> getClientes(String text){
 
 
-    String sql = "SELECT  fiid, fccliente, fctienda, fcemail, fctelefono, fdfecha FROM clientes  ";
 
     List<Clientes> lista = new ArrayList<Clientes>();
+        String texto = "'%"+text+"%'";
+        String sql="";
+        String sql1 = "SELECT  fiid, fccliente, fctienda, fcemail, fctelefono, fdfecha FROM clientes where fccliente like "+texto+" or fctienda like "+texto+" or fcemail like "+texto;
+        String sql2 = "SELECT  fiid, fccliente, fctienda, fcemail, fctelefono, fdfecha FROM clientes  ";
+
+         sql =(text==null) ? sql2 : sql1;
 
     List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
     for (Map row : rows) {
@@ -52,31 +58,6 @@ public class ClientesDaoImpl extends JdbcDaoImpl implements ClientesDao {
     logger.info(lista);
     return lista;
 }
-
-
-    public List<Clientes> getClientes(String text){
-
-String texto = "'%"+text+"%'";
-        String sql = "SELECT  fiid, fccliente, fctienda, fcemail, fctelefono, fdfecha FROM clientes where fccliente like "+texto+" or fctienda like "+texto+" or fcemail like "+texto;
-
-        List<Clientes> list = new ArrayList<Clientes>();
-
-        List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
-        for (Map row : rows) {
-            Clientes clientes = new Clientes();
-            clientes.setFiid((Integer)row.get("fiid"));
-            clientes.setFccliente((String)row.get("fccliente"));
-            clientes.setFctienda((String)row.get("fctienda"));
-            clientes.setFcemail((String)row.get("fcemail"));
-            clientes.setFctelefono((String)row.get("fctelefono"));
-            clientes.setFdfecha((Timestamp) row.get("fdfecha"));
-            list.add(clientes);
-        }
-
-        logger.info(list);
-        return list;
-    }
-
 
 
     public void crearCliente(String cliente, String tienda, String email, String telefono){

@@ -1,6 +1,5 @@
 package crud;
 
-import crud.dao.ClientesDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +11,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CrudApplicationTests {
 
 	@Autowired
-	ClientesDao clientesDao;
+	//ClientesDao clientesDao;
 
 	@Test
 	public void contextLoads() {
 
-		clientesDao.getClientes();
+	//	clientesDao.getClientes();
 
 	}
 
