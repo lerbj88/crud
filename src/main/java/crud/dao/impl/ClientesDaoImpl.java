@@ -55,6 +55,8 @@ public class ClientesDaoImpl extends JdbcDaoImpl implements ClientesDao {
         lista.add(clientes);
     }
 
+
+
     logger.info(lista);
     return lista;
 }

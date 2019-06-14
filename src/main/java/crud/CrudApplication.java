@@ -15,5 +15,7 @@ public class CrudApplication {
 	public SpringDataDialect springDataDialect() {
 		return new SpringDataDialect();
 	}
+
+
 	
 }
