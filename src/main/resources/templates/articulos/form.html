@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{home}">
+
+<head>
+    <title>Articulos</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+    <div class="card-body">
+
+    <h2>Artículo</h2>
+
+    <div class="container">
+        <form action="#" th:action="@{/articulos/form}" th:object="${articulos}"
+              method="post">
+
+                    <input type="text"
+                           th:field="*{fiid}"
+                           name="" class="form-control d-none" id="fiid" />
+
+
+            <div class="form-group row">
+                <label for="fcclave" class="col-sm-2 col-form-label">Clave: </label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcclave}"
+                           name="" class="form-control" id="fcclave" placeholder="Clave"/>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fcdescripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcdescripcion}"
+                           name="" class="form-control" id="fcdescripcion" placeholder="Descripción"/>
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="fccategoria" class="col-sm-2 col-form-label">Categoría:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fccategoria}"
+                           name="" class="form-control" id="fccategoria" placeholder="Categoría"/>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="fcmarca" class="col-sm-2 col-form-label">Marca:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fcmarca}"
+                           name="" class="form-control" id="fcmarca" placeholder="Marca"/>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="fccodigobarras" class="col-sm-2 col-form-label">Código de barras:</label>
+                <div class="col-sm-4">
+                    <input type="text"
+                           th:field="*{fccodigobarras}"
+                           name="" class="form-control" id="fccodigobarras" placeholder="Código de barras"/>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="ficosto" class="col-sm-2 col-form-label">Costo de compra:</label>
+                <div class="col-sm-4">
+                    <input type="number" step="0.01"
+                           th:field="*{ficosto}"
+                           name="" class="form-control" id="ficosto" placeholder="Costo de compra"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="fiprecio" class="col-sm-2 col-form-label">Precio:</label>
+                <div class="col-sm-4">
+                    <input type="number" step="0.01"
+                           th:field="*{fiprecio}"
+                           name="" class="form-control" id="fiprecio" placeholder="Precio"/>
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="sel1" class="col-sm-2 col-form-label">Elige un tipo :</label>
+                <div class="col-sm-4">
+                    <select class="form-control"    th:field="*{fitipo}" id="sel1" name="sellist1">
+                        <option value="" disabled selected>Elige una opcion</option>
+                        <option value="1">Servicio</option>
+                        <option value="2">Artículo</option>
+                    </select>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <a th:href="@{/articulos/list}" class="btn btn-default" role="button">
+                        <span aria-hidden="true"></span>Cancelar
+                    </a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    </div>
+</section>
+</body>
+</html>

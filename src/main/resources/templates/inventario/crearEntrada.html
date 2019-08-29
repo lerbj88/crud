@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Entrada de inventario</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Registrar Entrada de inventario</h6>
+        </div>
+        <div class="card-body">
+
+
+            <form th:action="@{/inventario/crearEntrada}"
+                  method="post">
+                <div class="form-row">
+                    <div class="form-group row">
+
+                        <div class="form-group col-sm-10">
+                            <label class="">Articulo :</label>
+                            <select class="form-control" name="fiarticulo" th:fiarticulo="${fiid}">
+                                <option th:each="p : ${listaarticulos}"
+                                        th:value="${p.fiid}"
+                                        th:text="${p.fcdescripcion}"></option>
+                            </select>
+                            <br>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-sm-2">
+                        <label for="ficantidad">Cantidad:</label>
+                        <input type="number" name="ficantidad" class="form-control" id="ficantidad" required="true"
+                               maxlength="4" placeholder="Cantidad" th:ficantidad="${ficantidad}">
+                    </div>
+
+
+                    <div class="form-group col-sm-2">
+                        <label for="ficosto">Costo:</label>
+                        <input type="number" name="ficosto" class="form-control" id="ficosto" required="true"
+                               maxlength="4" placeholder="Costo" th:ficosto="${ficosto}">
+                    </div>
+                    <div class="input-group-btn  topmargin2">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-cart-arrow-down"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+
+            <form th:action="@{/inventario/guardarEntrada}"method="post">
+                <input type="text" class="d-none" name="fitotalentrada" th:value="${totalentrada}">
+                <div class="form-row">
+                <div class="col-sm-8 row">
+                    <label for="fcdescripcion">Descripción:</label>
+                    <input type="text" name="fcdescripcion" class="form-control" id="fcdescripcion" required="true"
+                           placeholder="Descripción" >
+                </div>
+                </div>
+<br>
+
+                <div>
+                    <h5>Artículos Agregados</h5>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th class="d-none"></th>
+                            <th class="d-none"></th>
+                            <th class="d-none"></th>
+                            <th scope="col">#</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Costo</th>
+                            <th scope="col">Importe</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="p : ${listaartdto}">
+
+                            <td class="d-none"><input type="text" name="listapartidas" th:value="${p.id}"></td>
+                            <td class="d-none"><input type="number" name="listacantidad" th:value="${p.cantidad}"></td>
+                            <td class="d-none"><input type="number" name="listacostos" th:value="${p.fiprecio}"></td>
+                            <td th:text="${p.no}"></td>
+                            <td th:text="${p.cantidad}"></td>
+                            <td th:text="${p.fcclave}"></td>
+                            <td th:text="${p.fcdescripcion}"></td>
+                            <td th:inline="text">$ [[${#numbers.formatDecimal(p.fiprecio, 0, 'COMMA', 2, 'POINT')}]]
+                            </td>
+                            <td th:inline="text">$ [[${#numbers.formatDecimal(p.fiimporte, 0, 'COMMA', 2, 'POINT')}]]
+                            </td>
+
+
+                        </tbody>
+                    </table>
+
+
+                    <div th:if=${totalentrada!=null} align="right">
+                        <h1 th:inline="text">$ [[${#numbers.formatDecimal(totalentrada, 0, 'COMMA', 2, 'POINT')}]]</h1>
+                    </div>
+
+                    <div align="right">
+                        <button type="submit" class="btn btn-lg btn-primary"><span class="icon text-white-50">
+                    <i class="fas fa-save"></i>
+                    </span>Guardar
+                        </button>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+</section>
+
+</body>
+
+
+</html>

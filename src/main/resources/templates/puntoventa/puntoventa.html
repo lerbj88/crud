@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Punto de venta</title>
+
+</head>
+<body>
+
+<section layout:fragment="content">
+
+        <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Registrar venta</h6>
+        </div>
+        <div class="card-body">
+            <div align="left">
+                <form th:action="@{/puntoventa/puntoventa}" method="get">
+                    <div class="input-group input-group-sm" style="">
+                        <input type="text" name="placas" class="form-control pull-right" placeholder="Placas"
+                               th:if="${key} == null" th:value="${clienteDto2.fcplacas}" required="true"/>
+                        <input type="text" name="placas" class="form-control pull-right" placeholder="Placas"
+                               th:if="${key} != null" th:value="${clienteDto2.fcplacas}"/>
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> Validar Placas
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div th:if="${mensaje.contains('placas')}" class="alert alert-danger"><label th:text="${mensaje}"></label>
+            </div>
+
+            <table class="table-sm">
+                <tr>
+                    <td>
+                        <form th:object="${clienteDto}">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label d-none "><strong>Id:</strong> </label>
+                                <div class="col-sm-10 d-none">
+                                    <label class="col-sm-8 col-form-label " th:text="*{fiidcliente}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>Nombre:</strong> </label>
+                                <div class="col-sm-7">
+                                    <label class="col-sm-7 col-form-label" th:text="*{fcnombre}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>E-mail:</strong> </label>
+                                <div class="col-sm-8">
+                                    <label class="col-sm-8 col-form-label" th:text="*{email}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>Teléfono:</strong> </label>
+                                <div class="col-sm-7">
+                                    <label class="col-sm-7 col-form-label" th:text="*{fctelefono}"></label>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </td>
+                    <td>
+                        <form th:object="${clienteDto2}">
+
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label d-none"><strong>Id:</strong> </label>
+                                <div class="col-sm-10 d-none">
+                                    <label class="col-sm-8 col-form-label" th:text="*{fiidvehiculo}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>Placas:</strong> </label>
+                                <div class="col-sm-7">
+                                    <label class="col-sm-7 col-form-label" th:text="*{fcplacas}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>Color:</strong> </label>
+                                <div class="col-sm-7">
+                                    <label class="col-sm-7 col-form-label" th:text="*{Color}"></label>
+                                </div>
+
+                                <label class="col-sm-3 col-form-label"><strong>Marca:</strong> </label>
+                                <div class="col-sm-7">
+                                    <label class="col-sm-7 col-form-label" th:text="*{marca}"></label>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+
+            <form th:action="@{/puntoventa/puntoventa}"
+                  method="post">
+
+
+                <input class="d-none" type="text" name="fcplacas" th:value="${clienteDto2.fcplacas}">
+
+                <div>
+                    <div class="form-row ">
+
+
+                        <button type="submit" class="botonrapidopuntoventa btn btn-success btn-lg fa-pull-right "
+                                name="action" value="1">
+                        <span class="icon text-white-50">
+                     <i class="fas fa-car"></i>
+                        </span>
+                            Lavado Auto
+                        </button>
+                        <button type="submit" class="botonrapidopuntoventa btn btn-info btn-lg fa-pull-right"
+                                name="action" value="2">
+                    <span class="icon text-white-50">
+                    <i class="fas fa-truck-pickup"></i>
+                    </span>
+                            Lavado Camioneta
+                        </button>
+                        <button type="submit" class="botonrapidopuntoventa btn btn-success btn-lg fa-pull-right"
+                                name="action" value="3">
+                        <span class="icon text-white-50">
+                     <i class="fas fa-car"></i>
+                        </span>
+                            Lavado Express Auto
+                        </button>
+                        <button type="submit" class="botonrapidopuntoventa btn btn-info btn-lg fa-pull-right"
+                                name="action" value="4">
+                        <span class="icon text-white-50">
+                    <i class="fas fa-truck-pickup"></i>
+                            </span>
+                            Lavado Express Camioneta
+                        </button>
+
+
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-row">
+                    <div class="form-group row">
+
+                        <div class="form-group col-sm-10">
+                            <label class="">Articulo :</label>
+                            <select class="form-control" name="fiarticulo" th:fiarticulo="${fiid}">
+                                <option th:each="p : ${listaarticulos}"
+                                        th:value="${p.fiid}"
+                                        th:text="${p.fcdescripcion}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-sm-2">
+                        <label for="ficantidad">Cantidad:</label>
+                        <input type="number" name="ficantidad" class="form-control" id="ficantidad" required="true"
+                               maxlength="4" placeholder="Cantidad" value="1" th:ficantidad="${ficantidad}">
+                    </div>
+
+
+                    <div class="input-group-btn  topmargin2">
+                        <button type="submit" class="btn btn-primary" name="action" value="5"><i class="fas fa-cart-arrow-down"></i> Agregar
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+            <form th:action="@{/puntoventa/crearfactura}"
+                  method="post">
+
+                <input type="text" class="d-none" name="ficliente" th:value="${clienteDto.fiidcliente}">
+                <input type="text" class="d-none" name="fiauto" th:value="${clienteDto2.fiidvehiculo}">
+                <input type="text" class="d-none" name="fitotalfactura" th:value="${totalfactura}">
+
+
+                        <label class=""><b>Asignar Lavador :</b></label>
+                        <select class="form-control " name="filavador" th:fnflujoid="${fiid}" required multiple="multiple" size="5">
+
+                            <option th:each="p : ${listaempleados}"
+                                    th:value="${p.fiid}"
+                                    th:text="${p.fcnombre}"
+
+                            ></option>
+                        </select>
+                        <br>
+
+
+
+                <div>
+                    <h5>Artículos Agregados</h5>
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th class="d-none"></th>
+                            <th class="d-none"></th>
+                            <th scope="col">#</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Clave</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Importe</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="p : ${listaartdto}">
+
+                            <td class="d-none"><input type="text" name="listapartidas" th:value="${p.id}"></td>
+                            <td class="d-none"><input type="number" name="listacantidad" th:value="${p.cantidad}"></td>
+                            <td th:text="${p.no}"></td>
+                            <td th:text="${p.cantidad}"></td>
+                            <!--      <td ><input class="form-control form-control-sm anchocantidad d-none"  type="number" name="listacantidad" value="1" >1</td> -->
+                            <td th:text="${p.fcclave}"></td>
+                            <td th:text="${p.fcdescripcion}"></td>
+                            <td th:inline="text">$ [[${#numbers.formatDecimal(p.fiprecio, 0, 'COMMA', 2, 'POINT')}]]
+                            </td>
+                            <td th:inline="text">$ [[${#numbers.formatDecimal(p.fiimporte, 0, 'COMMA', 2, 'POINT')}]]
+                            </td>
+
+
+                        </tbody>
+                    </table>
+
+
+                    <div th:if=${totalfactura!=null} align="right">
+                        <h1 th:inline="text">$ [[${#numbers.formatDecimal(totalfactura, 0, 'COMMA', 2, 'POINT')}]]</h1>
+                    </div>
+
+                    <div align="right">
+                        <button type="submit" class="btn btn-lg btn-primary"><span class="icon text-white-50">
+                    <i class="fas fa-save"></i>
+                    </span>Guardar
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</section>
+
+</body>
+
+
+</html>

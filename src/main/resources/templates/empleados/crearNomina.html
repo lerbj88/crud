@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de Ventas</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="card-body">
+
+    <h3>Crear de Nomina</h3>
+
+
+    <form th:action="@{/empleados/crearNomina}"
+          method="post">
+
+
+        <table class="margenizquierdo30" WIDTH="100%">
+
+            <tr>
+                <td class="">
+                    <b><label class="form-label"> No. de empleado : </label></b>
+                    <label class="  form-label" th:text="${empleado.fiid}"></label>
+                    <br>
+                    <b><label class=" form-label"> Empleado : </label></b>
+                    <label class="form-label" th:text="${empleado.fcnombre}"></label>
+                    <br>
+
+                    <b><label class=" form-label"> Dirección : </label></b>
+                    <label class="form-label" th:text="${empleado.fcdireccion}"></label>
+                    <br>
+                    <b><label class=" form-label"> Teléfono : </label></b>
+                    <label class="form-label" th:text="${empleado.fctelefono}"></label>
+                    <br>
+                </td>
+                <td class="">
+                    <b><label class=" form-label"> Fecha de ingreso : </label></b>
+                    <label class="form-label" th:text="${empleado.fdfechaingreso}"></label>
+                    <br>
+
+                    <b><label class=" form-label"> Puesto : </label></b>
+                    <label class="form-label" th:if="${empleado.fipuesto==1}">Lavador</label>
+                    <label class="form-label" th:if="${empleado.fipuesto==2}">Administrativo</label>
+                    <br>
+
+
+                    <b><label class=" form-label"> Porcentaje comisión : </label></b>
+                    <label class="form-label" th:text="${empleado.fiporcentaje}"></label>
+
+                </td>
+            </tr>
+        </table>
+        <br>
+
+        <input class="d-none" name="fiempleado" th:value="${empleado.fiid}">
+        <input class="d-none"  name="fitotal" th:value="${totalpercepcion}">
+
+        <div th:if="${detalleNomina.isEmpty()}" class="alert alert-info topmargin2">
+            <label>No existen servicios pendientes de pago para este empleado.</label>
+        </div>
+
+        <div th:if="${detalleNomina.size()>0}">
+
+        <h5>Servicios Realizados</h5>
+        <table class="table table-striped table-sm">
+            <tr>
+                <th class="d-none"><a ></a></th>
+                <th class="d-none"><a class="d-none"></a></th>
+                <th class="d-none"><a class="d-none"></a></th>
+                <th class="d-none"><a class="d-none"></a></th>
+                <th class="d-none"><a class="d-none"></a></th>
+                <th class="d-none"><a class="d-none"></a></th>
+                <th><a class="sorted">Clave</a></th>
+                <th><a class="sorted">Descripción</a></th>
+                <th><a class="sorted">Precio</a></th>
+                <th><a class="sorted">Percepción</a></th>
+            </tr>
+            <tr th:each="p : ${detalleNomina}">
+                <td class="d-none" ><input  name="finum" th:value="${p.finum}"></td>
+                <td class="d-none" ><input  name="fiarticulo" th:value="${p.fiarticulo}"></td>
+                <td class="d-none" ><input  name="fcclave" th:value="${p.fcclave}"></td>
+                <td class="d-none" ><input  name="fcdescripcion" th:value="${p.fcdescripcion}"></td>
+                <td class="d-none" ><input  name="fiprecio" th:value="${p.fiimporte}"></td>
+                <td class="d-none" ><input  name="fitotaln" th:value="${p.fipercepcion}"></td>
+                <td th:text="${p.fcclave}"></td>
+                <td th:text="${p.fcdescripcion}"></td>
+                <td th:text="${p.fiimporte}"></td>
+                <td th:text="${p.fipercepcion}"></td>
+            </tr>
+        </table>
+
+        <div align="right">
+            <h1 th:inline="text">Total: $ [[${#numbers.formatDecimal(totalpercepcion, 0, 'COMMA', 2, 'POINT')}]]</h1>
+        </div>
+
+
+        <div align="right">
+            <button type="submit" class="btn btn-lg btn-primary"><span class="icon text-white-50">
+                    <i class="fas fa-save"></i>
+                    </span>Guardar
+            </button>
+        </div>
+        </div>
+
+    </form>
+
+    </div>
+
+</section>
+
+</body>
+
+
+</html>

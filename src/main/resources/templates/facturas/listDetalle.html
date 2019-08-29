@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de Ventas</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="card-body">
+
+    <h1>Detalle de Venta</h1>
+
+
+    <br>
+
+    <b><label class="form-label" > Folio : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fiid}" ></label>
+<br>
+    <b><label class="form-label" > Cliente : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fccliente}" ></label>
+    <br>
+    <b><label class="form-label" > Correo : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fccorreo}" ></label>
+    <br>
+    <b><label class="form-label" > Teléfono : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fctelefono}" ></label>
+    <br>
+    <b><label class="form-label" > Placas : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fcplacas}" ></label>
+    <br>
+    <b><label class="form-label" > Color : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fccolor}" ></label>
+    <br>
+    <b><label class="form-label" > Marca : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fcmarca}" ></label>
+    <br>
+    <b><label class="form-label" > Empleado(s) : </label></b>
+    <label class="form-label" th:text="${fclavadores}" ></label>
+
+    <br> <b> <label class="form-label" > Total : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fitotal}" ></label>
+    <br>
+    <b> <label class="form-label" > Fecha : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fdfecha}" ></label>
+    <br>
+    <b> <label class="form-label" > Estatus : </label></b>
+    <label class="form-label" th:text="${cabeceroFactura.fistatus}" ></label>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th><a class="sorted" >Num</a></th>
+            <th><a class="sorted" >Cantidad</a></th>
+
+            <th><a class="sorted" >Descripción</a></th>
+            <th><a class="sorted" >Precio</a></th>
+            <th><a class="sorted" >Importe</a></th>
+
+        </tr>
+        <tr th:each="p : ${detalleFactura}">
+            <td th:text="${p.finum}"></td>
+            <td th:text="${p.ficantidad}"></td>
+
+            <td th:text="${p.fcdescripcion}"></td>
+            <td th:text="${p.fiprecio}"></td>
+            <td th:text="${p.fiimporte}"></td>
+
+
+        </tr>
+    </table>
+
+    </div>
+
+
+</section>
+
+</body>
+
+
+</html>

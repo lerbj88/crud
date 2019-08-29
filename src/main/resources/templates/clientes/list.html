@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{layout}">
+      layout:decorate="~{home}">
 
 <head>
     <meta charset="UTF-8"/>
@@ -10,15 +10,7 @@
 <body>
 <section layout:fragment="content">
 
-
-    <nav id="navlist" class="col-sm-3 col-md-2 bg-light sidebar">
-        <ul  class="nav nav-pills flex-column">
-            <li class="nav-item"><a id="opcion1" class="nav-link active" href="list">Clientes
-                <span class="sr-only">(current)</span>
-            </a></li>
-
-        </ul>
-    </nav>
+    <div class="card-body">
 
     <h1>Lista de clientes</h1>
     <div align="right">
@@ -38,28 +30,31 @@
 
     <table class="table table-striped">
         <tr>
-            <th><a class="sorted" >id</a></th>
-            <th><a class="sorted" >cliente</a></th>
-            <th><a class="sorted" >tienda</a></th>
-            <th><a class="sorted" >email</a></th>
-            <th><a class="sorted" >telefono</a></th>
-            <th><a class="sorted" >fecha</a></th>
-             <th>&nbsp;opciones</th>
+            <th><a class="sorted" >Id</a></th>
+            <th><a class="sorted" >Cliente</a></th>
+
+            <th><a class="sorted" >Email</a></th>
+            <th><a class="sorted" >Teléfono</a></th>
+            <th><a class="sorted" >Fecha</a></th>
+             <th>&nbsp;Opciones</th>
         </tr>
         <tr th:each="p : ${lista}">
             <td th:text="${p.fiid}"></td>
             <td th:text="${p.fccliente}"></td>
-            <td th:text="${p.fctienda}"></td>
+
             <td th:text="${p.fcemail}"></td>
             <td th:text="${p.fctelefono}"></td>
             <td th:text="${p.fdfecha}"></td>
 
             <td>
-                <a href="#" class="btn btn-success" title="Editar" th:href="@{/clientes/form(id=${p.fiid})}">
-                    <span class="far fa-edit"></span> Editar
+                <a href="#" class="btn btn-success" title="Editar" th:href="@{/clientes/listautos(id=${p.fiid})}">
+                    <span class="fas fa-car"></span>
+                </a>
+                <a href="#" class="btn btn-warning" title="Editar" th:href="@{/clientes/form(id=${p.fiid})}">
+                    <span class="far fa-edit"></span>
                 </a>
                 <a href="#" class="btn btn-danger" title="Eliminar" th:href="@{/clientes/eliminar(id=${p.fiid})}">
-                    <i class="fas fa-trash-alt"></i> Eliminar
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
         </tr>
@@ -113,6 +108,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 

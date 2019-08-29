@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<body>
+
+<section th:fragment="content1">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="navlist" class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul  class="nav nav-pills flex-column">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="collapse" data-target="#catalogosmenu" aria-expanded="true">  Catálogos</a>
+                        <div id="catalogosmenu" class="collapse show">
+                            <ul>
+                                <li><a href="/usuarios/list" class="waves-effect">Usuarios</a>
+                                </li>
+                                <li><a href="/empleados/list" class="waves-effect">Empleados</a>
+                                </li>
+                                <li><a href="/articulos/list" class="waves-effect">Servicios</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+</body>
+
+
+</html>

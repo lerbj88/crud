@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Lista de clientes</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="card-body">
+
+    <h3>Lista de vehiculos del cliente <label th:text="${fccliente}" ></label></h3>
+
+
+    <a th:href="@{/clientes/formauto(id=${ficliente})}" class="btn btn-primary far fa-file">Agregar Vehiuclo
+    </a>
+
+    <table class="table table-striped">
+        <tr>
+            <th><a class="sorted" >Id</a></th>
+            <th><a class="sorted" >Placas</a></th>
+
+            <th><a class="sorted" >Color</a></th>
+            <th><a class="sorted" >Marca</a></th>
+            <th><a class="sorted" >Fecha</a></th>
+             <th>&nbsp;Opciones</th>
+        </tr>
+        <tr th:each="p : ${lista}">
+            <td th:text="${p.fiid}"></td>
+            <td th:text="${p.fcplacas}"></td>
+
+            <td th:text="${p.fccolor}"></td>
+            <td th:text="${p.fcmarca}"></td>
+            <td th:text="${p.fdfecha}"></td>
+
+            <td>
+
+                <a href="#" class="btn btn-danger" title="Eliminar" th:href="@{/clientes/eliminarauto(id=${p.fiid},ficliente=${ficliente})}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    </div>
+
+
+</section>
+
+</body>
+
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{home}">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Detalle de entrada</title>
+
+</head>
+<body>
+<section layout:fragment="content">
+
+    <div class="card-body">
+
+    <h1>Detalle de Entrada</h1>
+
+
+    <br>
+
+    <b><label class="form-label" > Folio : </label></b>
+    <label class="form-label" th:text="${cabeceroEntrada.fiid}" ></label>
+<br>
+    <b><label class="form-label" > Descripción : </label></b>
+    <label class="form-label" th:text="${cabeceroEntrada.fcdescripcion}" ></label>
+    <br>
+    <b><label class="form-label" > Usuario : </label></b>
+    <label class="form-label" th:text="${cabeceroEntrada.fcusuario}" ></label>
+    <br>
+    <b><label class="form-label" > Total : </label></b>
+    <label class="form-label" th:text="${cabeceroEntrada.fitotal}" ></label>
+    <br>
+    <b><label class="form-label" > Fecha : </label></b>
+    <label class="form-label" th:text="${cabeceroEntrada.fdfecha}" ></label>
+    <br>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th><a class="sorted" >Num</a></th>
+            <th><a class="sorted" >Cantidad</a></th>
+            <th><a class="sorted" >Descripción</a></th>
+            <th><a class="sorted" >Costo</a></th>
+            <th><a class="sorted" >Importe</a></th>
+
+        </tr>
+        <tr th:each="p : ${detalleEntrada}">
+            <td th:text="${p.finum}"></td>
+            <td th:text="${p.ficantidad}"></td>
+            <td th:text="${p.fcdescripcion}"></td>
+            <td th:text="${p.ficosto}"></td>
+            <td th:text="${p.fiimporte}"></td>
+
+
+        </tr>
+    </table>
+
+    </div>
+
+
+</section>
+
+</body>
+
+
+</html>

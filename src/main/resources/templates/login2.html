@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <link th:href="@{/css/font-awesome.min.css}"  rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/fontsgooglecss.css}"/>
+    <link rel="stylesheet"  th:href="@{/css/login.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"  >
+    <title>Acceso al sistema</title>
+
+    <!-- include css in the header -->
+</head>
+<body >
+
+
+<div id="login" class="centrado">
+
+                <form  name="f" th:action="@{/login}" method="post">
+                 <!--   <h5 class="text-center" >Acceso a CarWash</h5> -->
+                    <img class="margenimagen" src="http://localhost:8081/images/val.jpeg" width="200" height="100" />
+                    <p class="centrado">Usuario:</p>
+                        <input id="user" class="form-control" type="text" name="username" placeholder="Usuario">
+                    <label class="centrado">Contraseña:</label>
+                        <input id="pass" class="form-control" type="password" name="password" placeholder="Password...">
+
+                    <br>
+                    <div th:if="${param.error}" class="alert alert-danger">
+                    <label>Error al validar usuario y password</label>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <label>Haz finalizado sesion correctamente.</label>
+                    </div>
+
+                        <button class="btn btn-lg btn-success btn-block" type="submit">Entrar
+                            <i class="fas fa-key"></i>
+                        </button>
+
+
+                </form>
+
+</div>
+
+
+<script  src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</body>
+
+</html>
+

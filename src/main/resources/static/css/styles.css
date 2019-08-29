@@ -2,14 +2,14 @@
  * Base structure
  */
 
-/* Move down content because we have a fixed navbar that is 3.5rem tall */
+/* Move down content because we have a fixed navbar that is 3.5rem tall
 body {
     padding-top: 3.5rem;
 }
 
 /*
  * Typography
- */
+
 
 h1 {
     margin-bottom: 20px;
@@ -19,7 +19,7 @@ h1 {
 
 /*
  * Sidebar
- */
+
 
 .sidebar {
     position: fixed;
@@ -29,11 +29,11 @@ h1 {
     z-index: 1000;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content.
     border-right: 1px solid #eee;
 }
 
-/* Sidebar navigation */
+/* Sidebar navigation
 .sidebar {
     padding-left: 0;
     padding-right: 0;
@@ -59,7 +59,7 @@ h1 {
  * Dashboard
  */
 
-/* Placeholders */
+/* Placeholders
 .placeholders {
     padding-bottom: 3rem;
 }
@@ -70,24 +70,9 @@ h1 {
 }
 
 /* adds the original form-control-feedback class back in and sets it up to be used with icons */
-.form-control-feedback {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    display: block;
-    width: 34px;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    pointer-events: none;
-}
-i.form-control-feedback {
-    z-index:100;
-    right:15px;
-}
 
-/* adds colours to the form-control-feedback if being used with is-valid and is-invalid */
+
+/* adds colours to the form-control-feedback if being used with is-valid and is-invalid
 .form-control-feedback.is-valid {
     color: #28a745 !important;
 }
@@ -95,12 +80,12 @@ i.form-control-feedback {
     color: #dc3545 !important;
 }
 
-/* Removes the default display as none by bootstrap as we want to maintain our own validation */
+/* Removes the default display as none by bootstrap as we want to maintain our own validation
 .invalid-feedback {
     display:inherit;
 }
 
-/* allows the is-invalid to be put on the input group div */
+/* allows the is-invalid to be put on the input group div
 .input-group.is-invalid .input-group-addon {
     color: #a94442;
     background-color: #f2dede;
@@ -110,7 +95,7 @@ i.form-control-feedback {
     border-color: #dc3545 !important;
 }
 
-/* allows the is-valid to be put on the input group div */
+/* allows the is-valid to be put on the input group div
 .input-group.is-valid .input-group-addon {
     color: #28a745;
     background-color: #dff0d8;
@@ -120,8 +105,88 @@ i.form-control-feedback {
     border-color: #28a745 !important;
 }
 
-/* adjusts the top and bottom spacing for multiple error message output */
+/* adjusts the top and bottom spacing for multiple error message output
 .invalid-feedback p {
     margin-top:5px;
     margin-bottom:0px;
+}
+
+.colornavbar {
+    background: #000000;
+}
+
+.texto-white{
+    color: white !important;
+}
+
+.botonagregarpuntoventa{
+margin-left: 30px;
+
+}
+
+.botonrapidopuntoventa{
+margin-left: 30px;
+
+}
+
+.selectorarticulo{
+margin-left: 50px;
+}
+
+.anchoselector{
+width: 850px;
+}
+
+.anchocantidad{
+width: 60px;
+}
+
+.totalcajamargenleft{
+margin-left: 120px;
+}
+
+.margenizquierdo30{
+margin-left:30px;
+}
+
+*/
+
+
+
+.texto-white{
+    color: white !important;
+}
+
+.botonagregarpuntoventa{
+margin-left: 30px;
+
+}
+
+.botonrapidopuntoventa{
+margin-left: 30px;
+
+}
+
+.selectorarticulo{
+margin-left: 50px;
+}
+
+.anchoselector{
+width: 850px;
+}
+
+.anchocantidad{
+width: 60px;
+}
+
+.totalcajamargenleft{
+margin-left: 120px;
+}
+
+.margenizquierdo30{
+margin-left:30px;
+}
+
+.topmargin2 {
+    margin-top: 30px;
 }

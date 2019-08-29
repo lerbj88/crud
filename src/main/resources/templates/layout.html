@@ -18,9 +18,9 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="/home
-">Home</a>
+<nav class="navbar navbar-expand-md navbar-light fixed-top colornavbar">
+    <img class="margenimagen" src="http://localhost:8081/images/val.jpeg" width="100" height="50" />
+    <a class="navbar-brand" href="/home"> </a>
     <button class="navbar-toggler d-lg-none" type="button"
             data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -31,10 +31,16 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item"><a class="nav-link" href="/clientes/list">Clientes</a>
-        </ul>
-                <label class="text-white topmargin" >Usuario: <b th:inline="text">[[${#httpServletRequest.remoteUser}]]  </b>  &nbsp;    </label>
 
+            <li   class="nav-item texto-white" id="menu1"><a class="nav-link text-white" href="/puntoventa/puntoventa" >Operaciones</a>
+            </li>
+
+            <li  th:if="${#request.isUserInRole('ADMIN')}" class="nav-item texto-white" id="menu2"><a class="nav-link text-white" href="/usuarios/list" >Área Administrativa</a>
+            </li>
+
+            <li class="nav-item hide-icon texto-white "><a class="nav-link text-white" href="/usuarios/perfil" >Perfil</a></li>
+        </ul>
+        <label class="text-white topmargin" >Usuario: <b th:inline="text">[[${#httpServletRequest.remoteUser}]]  </b>  &nbsp;    </label>
         <form th:action="@{/logout}" method="post">
             <button type="submit" class="btn btn-primary">Salir</button>
         </form>
@@ -60,6 +66,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="/js/funciones.js"></script>
 
 
 </body>
